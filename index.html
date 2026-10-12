@@ -56,7 +56,7 @@ const ADMIN_PASSWORD = 'Koperasimits';
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzCGIolmrZ-OY42tFPLSQrv_m4_8peQGNOcdKUEu-deeBnpKDIL9whAV4fQODCpcY5oPw/exec';
 const loginForm = document.getElementById('adminLoginForm');
 loginForm.addEventListener('submit', function(e){e.preventDefault();if(adminUser.value===ADMIN_USERNAME && adminPass.value===ADMIN_PASSWORD){loginGate.style.display='none';appContent.style.display='block';}else{loginMessage.textContent='Nama pengguna atau kata sandi salah.';}});
-function sendToSpreadsheet(payload){if(!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.startsWith('https://script.google.com/macros/s/AKfycbzCGIolmrZ-OY42tFPLSQrv_m4_8peQGNOcdKUEu-deeBnpKDIL9whAV4fQODCpcY5oPw/exec')) return;fetch(GOOGLE_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)}).catch(err=>console.error('Gagal mengirim ke Spreadsheet',err));}
+function sendToSpreadsheet(payload){if(!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.startsWithconst GOOGLE_SCRIPT_URL ='https://script.google.com/macros/s/AKfycbzCGIolmrZ-OY42tFPLSQrv_m4_8peQGNOcdKUEu-deeBnpKDIL9whAV4fQODCpcY5oPw/exec')) return;fetch(GOOGLE_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)}).catch(err=>console.error('Gagal mengirim ke Spreadsheet',err));}
 // Ganti fungsi simpan agar perubahan produk dikirim juga ke Spreadsheet.
 const originalSaveProduct = saveProduct;
 saveProduct = function(e){e.preventDefault();let beforeIds=new Set(db.products.map(p=>p.id));originalSaveProduct(e);let name=document.getElementById('pName').value;let p=db.products[db.products.length-1];if(p)sendToSpreadsheet({type:'product',product:p});};
