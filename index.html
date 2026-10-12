@@ -53,7 +53,7 @@ function renderProfit(){let rev=db.sales.reduce((a,s)=>a+Number(s.total||0),0),c
 const ADMIN_USERNAME = 'admin';
 const ADMIN_PASSWORD = 'adminmits';
 // Tempel URL Web App Google Apps Script setelah deployment di sini:
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzCGIolmrZ-OY42tFPLSQrv_m4_8peQGNOcdKUEu-deeBnpKDIL9whAV4fQODCpcY5oPw/exec';
+const GOOGLE_SCRIPT_URL =https://script.google.com/macros/s/AKfycbwUPm9CTSO9k2XABTwTvwuFGLyKpFPWe9UdkkZWF-NWGo5YoMzkvGiBFIwMynGHtWL9CA/exec';
 const loginForm = document.getElementById('adminLoginForm');
 loginForm.addEventListener('submit', function(e){e.preventDefault();if(adminUser.value===ADMIN_USERNAME && adminPass.value===ADMIN_PASSWORD){loginGate.style.display='none';appContent.style.display='block';}else{loginMessage.textContent='Nama pengguna atau kata sandi salah.';}});
 function sendToSpreadsheet(payload){if(!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.startsWith('https://script.google.com/macros/s/AKfycbzCGIolmrZ-OY42tFPLSQrv_m4_8peQGNOcdKUEu-deeBnpKDIL9whAV4fQODCpcY5oPw/exec')) return;fetch(GOOGLE_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)}).catch(err=>console.error('Gagal mengirim ke Spreadsheet',err));}
